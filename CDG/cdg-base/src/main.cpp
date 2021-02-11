@@ -90,7 +90,7 @@ float z_position_mm = 0;       //position sur l'axe z en mm
 long z_min = -Z_COURSE;        //limite min axe z en pas 0 après réglage du zéro
 long z_max = Z_COURSE;         //limite max axe z en pas divisé par 2 après réglage du zéro
 
-byte data;
+byte data; 
 
 byte mode = 0;
 byte bouton = 0;
