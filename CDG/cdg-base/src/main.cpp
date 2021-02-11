@@ -202,10 +202,12 @@ void mesure_cdg() //procedure de recherche du centre de gravité
     mesurer_le_poids();                         //mesure le poids sur les capteurs s'ils sont tous les 4 à zéro (seuil) le palpeur est au CdG
     zaxis.runToNewPosition(z_min);              //baisse la pièce avant un nouveau déplacement
     erreur = 0;
+    
     if (capteur1_valeur > seuil)
     {
       erreur += capteur1_valeur;
     }
+    
     if (capteur2_valeur > seuil)
     {
       erreur += capteur2_valeur;
