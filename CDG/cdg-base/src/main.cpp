@@ -1,4 +1,4 @@
-#include <Arduino.h>
+#include <Arduino.h>      //inclusion des fonctions arduino pour platformio
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
 #include <Hx711.h>        //librairie de la carte de mesure en pont de wheatstone Hx711 attention librairie perso base sur première librairie
 //attention le signal CLK pour le HX711 ne fonctionne que sur les pin analogique ??? d'où A0 à A3
