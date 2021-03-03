@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PIECE_H
+#define PIECE_H
 
 class Piece
 {
@@ -14,3 +15,4 @@ class Piece
 
     Piece();            //Constructeur par défaut de Piece
 };
+#endif // PIECE_H

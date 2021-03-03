@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CAPTEUR_H
+#define CAPTEUR_H
+
 class Capteur
 
 {
@@ -16,3 +18,5 @@ Capteur(); //Constructeur par défaut > Initialisation à 0 de tous les attribut
 Capteur(float, float); //Constructeur avec choix de X et Y
 
 };
+
+#endif // CAPTEUR_H

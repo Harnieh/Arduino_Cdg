@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SERVOMOTEUR_H
+#define SERVOMOTEUR_H
+
 #include <stdint.h>
 
 class Servomoteur
@@ -14,5 +16,7 @@ class Servomoteur
 
     public:
 
-    Servomoteur();  //Constructeur par défaut
+    Servomoteur(uint8_t pinStep, uint8_t pinDirection);  //Constructeur par défaut
 };
+
+#endif // SERVOMOTEUR_H
