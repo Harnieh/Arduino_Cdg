@@ -1,8 +1,9 @@
 #include "Servomoteur.h"
 
-Servomoteur::Servomoteur(uint8_t pinStep, uint8_t pinDirection)  //Constructeur par défaut 
+Servomoteur::Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection)  //Constructeur par défaut 
 {
-    uint8_t 
+    uint8_t pinStep = pinDuPas;
+    uint8_t pinDirection = pinDeDirection;
     long position_pas;   //Position sur l'axe en pas (long ?_position_pas)
     float position_mm;    //Position sur l'axe en mm (float ?_position_mm)
     float facteurDeConversion;    //Facteur de conversion en mm par pas pour l'axe (float ?_facteur)
