@@ -8,15 +8,21 @@ class Servomoteur
     private:
     uint8_t pinStep;    //Pin défini step 
     uint8_t pinDirection;   //Pin défini direction
-    long position_pas;   //Position sur l'axe en pas (long ?_position_pas)
-    float position_mm;    //Position sur l'axe en mm (float ?_position_mm)
+
+    int servoVitesseMaxPas;    //Vitesse en pas par seconde
+    int servoAccelerationPas;  //Acceleration du servo en pas par seconde^2 ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission 
+
     float facteurDeConversion;    //Facteur de conversion en mm par pas pour l'axe (float ?_facteur)
-    long limiteMin;     //Limite minimale de l'axe en ?? (long ?_min)
-    long limiteMax;     //Limite maximale de l'axe (long ?_max)
+
+//AXE    long position_pas;   //Position sur l'axe en pas (long ?_position_pas)
+//AXE    float position_mm;    //Position sur l'axe en mm (float ?_position_mm)
+//AXE    long limiteMin;     //Limite minimale de l'axe en ?? (long ?_min)
+//AXE    long limiteMax;     //Limite maximale de l'axe (long ?_max)
 
     public:
 
-    Servomoteur(uint8_t pinStep, uint8_t pinDirection, long positionPas, float positionMm, float facteur, long min, long max);  //Constructeur par défaut
+    Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection, float facteur, int vitessemax, int acceleration);  //Constructeur par défaut
+    
     void setup();
 };
 
