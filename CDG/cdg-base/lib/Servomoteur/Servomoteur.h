@@ -24,6 +24,7 @@ class Servomoteur
     Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection, float facteur, int vitessemax, int acceleration);  //Constructeur par défaut
     
     void setup();
+    void run();
 };
 
 #endif // SERVOMOTEUR_H

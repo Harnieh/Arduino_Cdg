@@ -26,3 +26,10 @@ void Servomoteur::setup()
     servo.setAcceleration(servoAccelerationPas);
 }
 
+void Servomoteur::run(AccelStepper choixMoteur)
+{
+    choixMoteur.runSpeed();
+}
+
+
+

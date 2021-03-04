@@ -4,3 +4,13 @@
 #include "Capteur.h"
 #include "Servomoteur.h"
 #include "Piece.h"
+
+void setup()
+{
+ Servomoteur test(2,5,1,200,100);//moteur axe X
+}
+
+void loop()
+{
+
+}
