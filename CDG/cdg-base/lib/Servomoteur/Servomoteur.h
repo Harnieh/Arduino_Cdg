@@ -6,6 +6,7 @@
 class Servomoteur
 {
     private:
+    AccelStepper servo;
     uint8_t pinStep;    //Pin défini step 
     uint8_t pinDirection;   //Pin défini direction
 
@@ -24,7 +25,7 @@ class Servomoteur
     Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection, float facteur, int vitessemax, int acceleration);  //Constructeur par défaut
     
     void setup();
-    void run(AccelStepper);
+    void run();
 };
 
 #endif // SERVOMOTEUR_H
