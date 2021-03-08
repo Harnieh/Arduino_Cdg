@@ -5,7 +5,7 @@
 #include "Servomoteur.h"
 #include "Piece.h"
 
-#define PIN_SENS_MOTEUR2 9
+#define PIN_SENS_MOTEUR2 9 //test
 #define PIN_ENABLE 8
 
 #define X_VITESSE_MAX 500      //pas par seconde
