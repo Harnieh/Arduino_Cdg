@@ -1,15 +1,19 @@
 #include "Servomoteur.h"
 #include "Arduino.h"
 
-Servomoteur::Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection, float facteur, int vitessemax, int acceleration)  //Constructeur du moteur
+
+Servomoteur::Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection, float facteur, int vitessemax, int acceleration,int int pinenable)  //Constructeur du moteur
 {  
+#define pinsensmoteur2
+#define pinenable
+
      Serial.println("Constru servo");
 
     pinStep = pinDuPas;
     pinDirection = pinDeDirection;
 
-    servoVitesseMaxPas = vitessemax;
-    servoAccelerationPas = acceleration;
+    piloteVitesseMaxPas = vitessemax;
+    piloteAccelerationPas = acceleration;
 
     facteurDeConversion = facteur;    //Facteur de conversion en mm par pas pour l'axe (float ?_facteur)
 
@@ -22,31 +26,35 @@ Servomoteur::Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection, float facteur
 
 void Servomoteur::setup()
 {
-    Serial.println("entree setup servo");
-    AccelStepper servo(AccelStepper::DRIVER, pinStep, pinDirection); // création objet AccelStepper pour piloter les moteurs pas à pas
-    Serial.println("setup servo: creation de l accelstepper");
+    Serial.println("entree setup pilote");
+    AccelStepper pilote(AccelStepper::DRIVER, pinStep, pinDirection); // création objet AccelStepper pour piloter les moteurs pas à pas
+    Serial.println("setup pilote: creation de l accelstepper");
  
-    digitalWrite(pinDirection, 1);
-    Serial.println("setup servo: digital write");
+    pinMode(PIN_SENS_MOTEUR2, OUTPUT); // sortie digitale contrôle de direction du moteur 2 de l'axe X (le nombre de pas est dupliqué du moteur 1 sur la carte)
+    digitalWrite(PIN_SENS_MOTEUR2, 0);
+    pinMode(PIN_ENABLE, OUTPUT); // sortie digitale contrôle de direction du moteur 2 de l'axe X (le nombre de pas est dupliqué du moteur 1 sur la carte)
+    digitalWrite(PIN_ENABLE, 0);
+
+    Serial.println("setup pilote: digital write");
  
-    servo.setMaxSpeed(servoVitesseMaxPas);
-    Serial.println("setup servo: setMaxSpeed");
+    pilote.setMaxSpeed(piloteVitesseMaxPas);
+    Serial.println("setup pilote: setMaxSpeed");
  
-    servo.setAcceleration(servoAccelerationPas);
-    Serial.println("setup servo: setAcceleration");
+    pilote.setAcceleration(piloteAccelerationPas);
+    Serial.println("setup pilote: setAcceleration");
   
-    servo.setCurrentPosition(0);
-    Serial.println("setup servo: setcurrentpos");
+   // pilote.setCurrentPosition(0);    
+   // Serial.println("setup pilote: setcurrentpos");
 }
 
 void Servomoteur::run()
 {  
-Serial.println("MARCHE servo");
+Serial.println("MARCHE pilote");
 Serial.print("pinStep:");
-Serial.println(pinStep);
+Serial.println(pinStep);    // Retour serial des pins
 Serial.print("pindirection:");
-Serial.println(pinDirection);
-servo.runToNewPosition(100);
+Serial.println(pinDirection);   // Retour serial des pins
+servo.runToNewPosition(10); //Vas à la position 10
 }
 
 

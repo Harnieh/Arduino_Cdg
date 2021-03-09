@@ -6,12 +6,12 @@
 class Servomoteur
 {
     private:
-    AccelStepper servo;
+    AccelStepper pilote;
     uint8_t pinStep;    //Pin défini step 
     uint8_t pinDirection;   //Pin défini direction
 
-    int servoVitesseMaxPas;    //Vitesse en pas par seconde
-    int servoAccelerationPas;  //Acceleration du servo en pas par seconde^2 ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission 
+    int piloteVitesseMaxPas;    //Vitesse en pas par seconde
+    int piloteAccelerationPas;  //Acceleration du servo en pas par seconde^2 ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission 
 
     float facteurDeConversion;    //Facteur de conversion en mm par pas pour l'axe (float ?_facteur)
 
