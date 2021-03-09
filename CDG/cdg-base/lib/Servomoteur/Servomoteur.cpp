@@ -2,7 +2,7 @@
 #include "Arduino.h"
 
 
-Servomoteur::Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection, float facteur, int vitessemax, int acceleration,int int pinenable)  //Constructeur du moteur
+Servomoteur::Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection, float facteur, int vitessemax, int acceleration)  //Constructeur du moteur
 {  
 #define pinsensmoteur2
 #define pinenable
@@ -30,10 +30,10 @@ void Servomoteur::setup()
     AccelStepper pilote(AccelStepper::DRIVER, pinStep, pinDirection); // création objet AccelStepper pour piloter les moteurs pas à pas
     Serial.println("setup pilote: creation de l accelstepper");
  
-    pinMode(PIN_SENS_MOTEUR2, OUTPUT); // sortie digitale contrôle de direction du moteur 2 de l'axe X (le nombre de pas est dupliqué du moteur 1 sur la carte)
-    digitalWrite(PIN_SENS_MOTEUR2, 0);
-    pinMode(PIN_ENABLE, OUTPUT); // sortie digitale contrôle de direction du moteur 2 de l'axe X (le nombre de pas est dupliqué du moteur 1 sur la carte)
-    digitalWrite(PIN_ENABLE, 0);
+ //   pinMode(PIN_SENS_MOTEUR2, OUTPUT); // sortie digitale contrôle de direction du moteur 2 de l'axe X (le nombre de pas est dupliqué du moteur 1 sur la carte)
+ //   digitalWrite(PIN_SENS_MOTEUR2, 0);
+ //   pinMode(PIN_ENABLE, OUTPUT); // sortie digitale contrôle de direction du moteur 2 de l'axe X (le nombre de pas est dupliqué du moteur 1 sur la carte)
+ //   digitalWrite(PIN_ENABLE, 0);
 
     Serial.println("setup pilote: digital write");
  
@@ -54,7 +54,7 @@ Serial.print("pinStep:");
 Serial.println(pinStep);    // Retour serial des pins
 Serial.print("pindirection:");
 Serial.println(pinDirection);   // Retour serial des pins
-servo.runToNewPosition(10); //Vas à la position 10
+//servo.runToNewPosition(10); //Vas a la position 10
 }
 
 
