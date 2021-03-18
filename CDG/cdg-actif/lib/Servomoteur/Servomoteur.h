@@ -3,17 +3,24 @@
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
 #include <stdint.h>
 
-class Servomoteur
+
+
+class Servomoteur : public AccelStepper
 {
     private:
-    AccelStepper pilote;
-    uint8_t pinStep;    //Pin défini step 
-    uint8_t pinDirection;   //Pin défini direction
+    AccelStepper xaxis;
+
+    int pinStep;    //Pin défini step 
+    int pinDirection;   //Pin défini direction
+
+    long positionPas;
+    float facteur; //facteur de conversion mm/pas
+    float position_mm; //position sur l'axe x en mm
 
     int piloteVitesseMaxPas;    //Vitesse en pas par seconde
     int piloteAccelerationPas;  //Acceleration du servo en pas par seconde^2 ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission 
 
-    float facteurDeConversion;    //Facteur de conversion en mm par pas pour l'axe (float ?_facteur)
+//    float facteurDeConversion;    //Facteur de conversion en mm par pas pour l'axe (float ?_facteur)
 
 //AXE    long position_pas;   //Position sur l'axe en pas (long ?_position_pas)
 //AXE    float position_mm;    //Position sur l'axe en mm (float ?_position_mm)
@@ -22,10 +29,13 @@ class Servomoteur
 
     public:
 
-    Servomoteur(uint8_t pinDuPas, uint8_t pinDeDirection, float facteur, int vitessemax, int acceleration);  //Constructeur par défaut
+    Servomoteur(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration);  //Constructeur par défaut
     
     void setup();
-    void run();
+    void deplacer(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
+
+    void debug();
+
 };
 
 #endif // SERVOMOTEUR_H
