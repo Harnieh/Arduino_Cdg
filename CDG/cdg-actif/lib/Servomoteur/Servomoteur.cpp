@@ -43,8 +43,7 @@ void Servomoteur::deplacer(long dist_mm) //procédure de déplacement sur une po
    }
    else
    {
-      digitalWrite(pinsensmoteur2, 1); //le moteur 2 de l'axe X tourne en sens inverse du moteur 1
-     
+      digitalWrite(pinsensmoteur2, 1); //le moteur 2 de l'axe X tourne en sens inverse du moteur 1  
       Serial.println("digitalwritesens 1");
    }
    if (dist_mm != 0)
@@ -53,14 +52,31 @@ void Servomoteur::deplacer(long dist_mm) //procédure de déplacement sur une po
       positionPas = dist_mm;
       position_mm = positionPas * facteur;
      // envoie_donnees(1, position_mm); //envoie la nouvelle position en x pour affichage case 1
-      Serial.println(positionPas);
+      
    }
 } //fin de la procédure de déplacement
 
 void Servomoteur::debug() {
-    
+   Serial.print("piloteAccelerationPas");
+   Serial.println(piloteAccelerationPas);
 
+   Serial.print("piloteVitesseMaxPas=");
+   Serial.println(piloteVitesseMaxPas);
 
+   Serial.print("pinDirection=");
+   Serial.println(pinDirection);
+
+   Serial.print("pinStep=");
+   Serial.println(pinStep);
+   
+   Serial.print("facteur=");
+   Serial.println(facteur);
+
+   Serial.print("positionPas=");
+   Serial.println(positionPas);
+
+   Serial.print("position_mm=");
+   Serial.println(positionPas);
 }
 
 /**/
