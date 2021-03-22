@@ -1,11 +1,11 @@
-#ifndef SERVOMOTEUR_H
-#define SERVOMOTEUR_H
+#ifndef MOTEURPASAPAS_H
+#define MOTEURPASAPAS_H
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
 #include <stdint.h>
 
 
 
-class Servomoteur : public AccelStepper
+class MoteurPasAPas : public AccelStepper
 {
     private:
     AccelStepper xaxis;
@@ -29,7 +29,7 @@ class Servomoteur : public AccelStepper
 
     public:
 
-    Servomoteur(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration);  //Constructeur par défaut
+    MoteurPasAPas(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration);  //Constructeur par défaut
     
     void setup();
     void deplacer(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
@@ -38,4 +38,4 @@ class Servomoteur : public AccelStepper
 
 };
 
-#endif // SERVOMOTEUR_H
+#endif

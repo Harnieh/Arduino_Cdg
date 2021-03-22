@@ -1,9 +1,9 @@
-#include "Servomoteur.h"
+#include "MoteurPasAPaS.h"
 #include "Arduino.h"
 #define pinsensmoteur2 9
 #define pinenable 8
 
-Servomoteur::Servomoteur(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration) : AccelStepper(AccelStepper::DRIVER, pinDuPas, pinDeDirection) //Constructeur du moteur
+MoteurPasAPas::MoteurPasAPas(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration) : AccelStepper(AccelStepper::DRIVER, pinDuPas, pinDeDirection) //Constructeur du moteur
 {
    AccelStepper xaxis(AccelStepper::DRIVER, pinDuPas, pinDeDirection);
 
@@ -16,7 +16,7 @@ Servomoteur::Servomoteur(int pinDuPas, int pinDeDirection, /*float facteur,*/ in
    position_mm = 0; //position sur l'axe x en mm
 }
 
-void Servomoteur::setup()
+void MoteurPasAPas::setup()
 {
    pinMode(pinenable, OUTPUT);
    pinMode(pinsensmoteur2, OUTPUT);
@@ -24,7 +24,7 @@ void Servomoteur::setup()
    digitalWrite(pinenable,0);
 }
 
-void Servomoteur::deplacer(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
+void MoteurPasAPas::deplacer(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
 {
    AccelStepper xaxis(AccelStepper::DRIVER, pinStep, pinDirection);
    xaxis.setCurrentPosition(0);
@@ -35,6 +35,7 @@ void Servomoteur::deplacer(long dist_mm) //procédure de déplacement sur une po
 
    xaxis.setAcceleration(200);
    Serial.println("setAcceleration");
+
    if (dist_mm > 0)
    {
       digitalWrite(pinsensmoteur2, 0); //le moteur 2 de l'axe X tourne en sens inverse du moteur 1
@@ -56,7 +57,7 @@ void Servomoteur::deplacer(long dist_mm) //procédure de déplacement sur une po
    }
 } //fin de la procédure de déplacement
 
-void Servomoteur::debug() {
+void MoteurPasAPas::debug() {
    Serial.print("piloteAccelerationPas");
    Serial.println(piloteAccelerationPas);
 

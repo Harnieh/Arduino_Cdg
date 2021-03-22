@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
 // #include "Capteur.h"
-#include "Servomoteur.h"
+#include "MoteurPasAPas.h"
 // #include "Piece.h"
 
 #define PIN_SENS_MOTEUR2 9 // controle moteur 2
@@ -49,20 +49,25 @@ void loop()
 {
   if (first)
   {  
-    Servomoteur X(2,5,200,500);
-    Servomoteur Y(3,6,200,500);
-    Servomoteur Z(4,7,200,500);
+    MoteurPasAPas X(2,5,200,500);
+    MoteurPasAPas Y(3,6,200,500);
+    MoteurPasAPas Z(4,7,200,500);
     X.setup(); //POO
     Y.setup();
     Z.setup();
     Serial.println("X.deplacer(20);");
 
-    // X.deplacer(-150);
-    // X.deplacer(150);
-    // Y.deplacer(-150);
-    Y.deplacer(500);
-    // Z.deplacer(-150);
-    // Z.deplacer(150);
+    X.deplacer(-100);
+    X.deplacer(100);
+    X.debug();
+
+    Y.deplacer(-100);
+    Y.deplacer(100);
+    Y.debug();
+
+    Z.deplacer(-100);
+    Z.deplacer(100);
+    Z.debug();
     
     first=false;
     Serial.println("findeplacer");
