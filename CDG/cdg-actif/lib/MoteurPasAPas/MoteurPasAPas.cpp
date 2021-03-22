@@ -1,5 +1,6 @@
 #include "MoteurPasAPaS.h"
 #include "Arduino.h"
+#include "SensMoteur.h"
 #define pinsensmoteur2 9
 #define pinenable 8
 
@@ -20,7 +21,7 @@ void MoteurPasAPas::setup()
 {
    pinMode(pinenable, OUTPUT);
    pinMode(pinsensmoteur2, OUTPUT);
-   digitalWrite(pinsensmoteur2,1);//1 negatif 0 positif
+   digitalWrite(pinsensmoteur2,negatif);//1 negatif 0 positif
    digitalWrite(pinenable,0);
 }
 
@@ -38,14 +39,13 @@ void MoteurPasAPas::deplacer(long dist_mm) //procédure de déplacement sur une 
 
    if (dist_mm > 0)
    {
-      digitalWrite(pinsensmoteur2, 0); //le moteur 2 de l'axe X tourne en sens inverse du moteur 1
-     
-      Serial.println("digitalwritesens 0");
+      digitalWrite(pinsensmoteur2, positif); //le moteur 2 de l'axe X tourne en sens inverse du moteur 1
+      Serial.println("digitalwritesens positif");
    }
    else
    {
-      digitalWrite(pinsensmoteur2, 1); //le moteur 2 de l'axe X tourne en sens inverse du moteur 1  
-      Serial.println("digitalwritesens 1");
+      digitalWrite(pinsensmoteur2, negatif); //le moteur 2 de l'axe X tourne en sens inverse du moteur 1  
+      Serial.println("digitalwritesens negatif");
    }
    if (dist_mm != 0)
    {
@@ -57,7 +57,8 @@ void MoteurPasAPas::deplacer(long dist_mm) //procédure de déplacement sur une 
    }
 } //fin de la procédure de déplacement
 
-void MoteurPasAPas::debug() {
+void MoteurPasAPas::debug() 
+{
    Serial.print("piloteAccelerationPas");
    Serial.println(piloteAccelerationPas);
 
