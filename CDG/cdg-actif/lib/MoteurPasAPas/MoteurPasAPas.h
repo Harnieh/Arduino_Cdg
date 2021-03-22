@@ -3,12 +3,10 @@
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
 #include <stdint.h>
 
-
-
 class MoteurPasAPas : public AccelStepper
 {
     private:
-    AccelStepper xaxis;
+    AccelStepper axis;
 
     int pinStep;    //Pin défini step 
     int pinDirection;   //Pin défini direction

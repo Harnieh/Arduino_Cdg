@@ -1,6 +1,6 @@
-#include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
+/*#include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
 
-/*// création des objets AccelStepper pour piloter les moteurs pas à pas
+// création des objets AccelStepper pour piloter les moteurs pas à pas
 // axe X moteur 1  pin 2 = step, pin 5 = direction
 // axe X moteur 2  step dupliqué physiquement sur la carte de commande, pin 13 = direction
 // axe Y moteur 3 pin 3 = step, pin 6 = direction
@@ -294,7 +294,7 @@ void loop()
 void envoie_donnees(byte grandeur,float valeur)
   {
    byte byte1;
-byte byte2;      
+  byte byte2;      
    valeur=valeur*10; //x10 pour avoir une précision de 0,1
    valeur=valeur+32768; //prise en compte des valeurs négatives
    if (valeur<0)

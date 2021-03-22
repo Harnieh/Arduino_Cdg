@@ -1,7 +1,12 @@
+#include "Arduino.h"
 #include "Capteur.h"
 
-Capteur::Capteur()      //Constructeur par défaut > Initialisation à 0 excepté Tare connue
+Capteur::Capteur(int PinCapteurNum, uint8_t pinCapteurAlpha)
 {
+    pinUn = PinCapteurNum;
+    pinDeux = pinCapteurAlpha;
+    Hx711 Moncapteur(int pinUn, uint8_t pinDeux);
+
     capteurValeur=0.0;//VALEUR (float capteur?_valeur)
     capteurPoidsAVide=0.0;//POIDS A VIDE (float capteur?_offset)
     capteurFacteurEchelle=0.0;//FACTEUR D ECHELLE (float capteur?_fact)
@@ -10,12 +15,9 @@ Capteur::Capteur()      //Constructeur par défaut > Initialisation à 0 except�
     capteurPositionY=0.0;//(float capteur?_y)
 }
 
-Capteur::Capteur(float x,float y)      //Constructeur x y
+float Capteur::mesurer_le_poids()
 {
-    capteurValeur=0.0;//VALEUR (float capteur?_valeur)
-    capteurPoidsAVide=0.0;//POIDS A VIDE (float capteur?_offset)
-    capteurFacteurEchelle=0.0;//FACTEUR D ECHELLE (float capteur?_fact)
-    capteurTareConnue=0.0;//POIDS DE LA TARE DU CAPTEUR EN NEWTON(float capteur?_tare_connue)
-    capteurPositionX= x;//POSITION DU CAPTEUR EN X EN MM (float capteur?_x)
-    capteurPositionY= y;//POSITION DU CAPTEUR EN Y EN MM(float capteur?_y)
+    Serial.println("Test");
+    //capteurValeur=
 }
+

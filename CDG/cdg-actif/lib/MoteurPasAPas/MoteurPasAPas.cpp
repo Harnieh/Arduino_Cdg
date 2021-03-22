@@ -6,11 +6,11 @@
 
 MoteurPasAPas::MoteurPasAPas(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration) : AccelStepper(AccelStepper::DRIVER, pinDuPas, pinDeDirection) //Constructeur du moteur
 {
-   AccelStepper xaxis(AccelStepper::DRIVER, pinDuPas, pinDeDirection);
+   AccelStepper axis(AccelStepper::DRIVER, pinDuPas, pinDeDirection);
 
    pinStep = pinDuPas;    //Pin défini step 
    pinDirection = pinDeDirection;   //Pin défini direction
-   piloteVitesseMaxPas = vitessemax;    //Vitesse en pas par seconde
+   piloteVitesseMaxPas = vitessemax;   //Vitesse en pas par seconde
    piloteAccelerationPas = acceleration;
 
    positionPas = 0;
@@ -27,17 +27,17 @@ void MoteurPasAPas::setup()
 
 void MoteurPasAPas::deplacer(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
 {
-   AccelStepper xaxis(AccelStepper::DRIVER, pinStep, pinDirection);
-   xaxis.setCurrentPosition(0);
+   AccelStepper axis(AccelStepper::DRIVER, pinStep, pinDirection);
+   axis.setCurrentPosition(0);
    Serial.println("setcurrentpos");
 
-   xaxis.setMaxSpeed(500);
+   axis.setMaxSpeed(500);  //test de passer valeur constru
    Serial.println("setMaxSpeed");
 
-   xaxis.setAcceleration(200);
+   axis.setAcceleration(200);    //test de passer valeur constru
    Serial.println("setAcceleration");
 
-   if (dist_mm > 0)
+   if (dist_mm > 0)     //RAJOUTER CONDITION
    {
       digitalWrite(pinsensmoteur2, positif); //le moteur 2 de l'axe X tourne en sens inverse du moteur 1
       Serial.println("digitalwritesens positif");
@@ -49,13 +49,14 @@ void MoteurPasAPas::deplacer(long dist_mm) //procédure de déplacement sur une 
    }
    if (dist_mm != 0)
    {
-      xaxis.runToNewPosition(dist_mm);
+      axis.runToNewPosition(dist_mm);
       positionPas = dist_mm;
       position_mm = positionPas * facteur;
      // envoie_donnees(1, position_mm); //envoie la nouvelle position en x pour affichage case 1
       
    }
 } //fin de la procédure de déplacement
+
 
 void MoteurPasAPas::debug() 
 {

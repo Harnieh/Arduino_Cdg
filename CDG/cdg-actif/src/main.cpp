@@ -2,7 +2,7 @@
 #include <Hx711.h>        //librairie de la carte de mesure en pont de wheatstone Hx711 attention librairie perso base sur première librairie
 #include <stdint.h>
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
-// #include "Capteur.h"
+#include "Capteur.h"
 #include "MoteurPasAPas.h"
 // #include "Piece.h"
 
@@ -52,6 +52,7 @@ void loop()
     MoteurPasAPas X(2,5,200,500);
     MoteurPasAPas Y(3,6,200,500);
     MoteurPasAPas Z(4,7,200,500);
+    Capteur A(10,A0);
     X.setup(); //POO
     Y.setup();
     Z.setup();
@@ -68,7 +69,9 @@ void loop()
     Z.deplacer(-100);
     Z.deplacer(100);
     Z.debug();
-    
+
+    A.mesurer_le_poids();
+
     first=false;
     Serial.println("findeplacer");
   }
