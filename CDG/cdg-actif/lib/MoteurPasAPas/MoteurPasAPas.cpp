@@ -21,7 +21,7 @@ void MoteurPasAPas::setup()
 {
    pinMode(pinenable, OUTPUT);
    pinMode(pinsensmoteur2, OUTPUT);
-   digitalWrite(pinsensmoteur2,negatif);//1 negatif 0 positif
+   digitalWrite(pinsensmoteur2,negatif);
    digitalWrite(pinenable,0);
 }
 
