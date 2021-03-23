@@ -22,7 +22,6 @@ public:
 
 Capteur(int,const uint8_t); //Constructeur par défaut > Initialisation à 0 de tous les attributs
 
-
 float mesurer_le_poids();
 };
 

@@ -1,10 +1,10 @@
-#include "MoteurPasAPaS.h"
+#include "Motorisation.h"
 #include "Arduino.h"
 #include "SensMoteur.h"
 #define pinsensmoteur2 9
 #define pinenable 8
 
-MoteurPasAPas::MoteurPasAPas(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration) : AccelStepper(AccelStepper::DRIVER, pinDuPas, pinDeDirection) //Constructeur du moteur
+Motorisation::Motorisation(int pinDuPas, int pinDeDirection, int vitessemax, int acceleration) : AccelStepper(AccelStepper::DRIVER, pinDuPas, pinDeDirection) //Constructeur du moteur
 {
    AccelStepper axis(AccelStepper::DRIVER, pinDuPas, pinDeDirection);
 
@@ -17,7 +17,7 @@ MoteurPasAPas::MoteurPasAPas(int pinDuPas, int pinDeDirection, /*float facteur,*
    position_mm = 0; //position sur l'axe x en mm
 }
 
-void MoteurPasAPas::setup()
+void Motorisation::setup()
 {
    pinMode(pinenable, OUTPUT);
    pinMode(pinsensmoteur2, OUTPUT);
@@ -25,16 +25,16 @@ void MoteurPasAPas::setup()
    digitalWrite(pinenable,0);
 }
 
-void MoteurPasAPas::deplacer(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
+void Motorisation::deplacer(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
 {
    AccelStepper axis(AccelStepper::DRIVER, pinStep, pinDirection);
    axis.setCurrentPosition(0);
    Serial.println("setcurrentpos");
 
-   axis.setMaxSpeed(500);  //test de passer valeur constru
+   axis.setMaxSpeed(piloteVitesseMaxPas);  //test de passer valeur constru
    Serial.println("setMaxSpeed");
 
-   axis.setAcceleration(200);    //test de passer valeur constru
+   axis.setAcceleration(piloteAccelerationPas);    //test de passer valeur constru
    Serial.println("setAcceleration");
 
    if (dist_mm > 0)     //RAJOUTER CONDITION
@@ -58,7 +58,7 @@ void MoteurPasAPas::deplacer(long dist_mm) //procédure de déplacement sur une 
 } //fin de la procédure de déplacement
 
 
-void MoteurPasAPas::debug() 
+void Motorisation::debug() 
 {
    Serial.print("piloteAccelerationPas");
    Serial.println(piloteAccelerationPas);

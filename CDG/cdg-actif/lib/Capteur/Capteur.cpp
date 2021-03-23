@@ -3,9 +3,17 @@
 
 Capteur::Capteur(int PinCapteurNum, uint8_t pinCapteurAlpha)
 {
+    Serial.println("CONSTRU CAPTEUR");
+    Serial.println(PinCapteurNum);
+    Serial.println(pinCapteurAlpha);
+
     pinUn = PinCapteurNum;
     pinDeux = pinCapteurAlpha;
     Hx711 Moncapteur(int pinUn, uint8_t pinDeux);
+
+    Serial.println(pinUn);
+    Serial.println(pinDeux);
+
 
     capteurValeur=0.0;//VALEUR (float capteur?_valeur)
     capteurPoidsAVide=0.0;//POIDS A VIDE (float capteur?_offset)
@@ -17,7 +25,7 @@ Capteur::Capteur(int PinCapteurNum, uint8_t pinCapteurAlpha)
 
 float Capteur::mesurer_le_poids()
 {
-    Serial.println("Test");
+    Serial.println("MESURER LE POIDS");
     //capteurValeur=
 }
 

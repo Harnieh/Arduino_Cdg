@@ -5,7 +5,7 @@
 
 //RENOMMER CETTE CLASSE MOTORISATION PUIS CLASSE POULIE ET COURROIE, MICROSTEPPING
 
-class MotorisationMoteur : public AccelStepper
+class Motorisation : public AccelStepper
 {
     private:
     AccelStepper axis;
@@ -29,7 +29,7 @@ class MotorisationMoteur : public AccelStepper
 
     public:
 
-    MotorisationMoteur(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration);  //Constructeur par défaut
+    Motorisation(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration);  //Constructeur par défaut
     
     void setup();
     void deplacer(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
