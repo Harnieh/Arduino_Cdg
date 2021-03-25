@@ -43,8 +43,6 @@ void Plateau::deplacerY(long dist_mm) //procédure de déplacement sur une posit
    
 } //fin de la procédure de déplacement
 
-
-
 void Plateau::deplacerX(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
 {
    AccelStepper axis(AccelStepper::DRIVER, pinStep, pinDirection);
