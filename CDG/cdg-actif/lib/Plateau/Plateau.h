@@ -32,5 +32,4 @@ class Plateau : public AccelStepper
     void deplacerY(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
 
     void debug();
-
 };
