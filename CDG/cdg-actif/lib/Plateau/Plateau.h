@@ -1,11 +1,7 @@
-
-
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
 #include <stdint.h>
 
-//RENOMMER CETTE CLASSE MOTORISATION PUIS CLASSE POULIE ET COURROIE, MICROSTEPPING
-
-class Motorisation : public AccelStepper
+class Plateau : public AccelStepper
 {
     private:
     AccelStepper axis;
@@ -29,10 +25,11 @@ class Motorisation : public AccelStepper
 
     public:
 
-    Motorisation(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration);  //Constructeur par défaut
+    Plateau(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration);  //Constructeur par défaut
     
     void setup();
-    void deplacer(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
+    void deplacerX(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
+    void deplacerY(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
 
     void debug();
 

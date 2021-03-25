@@ -2,8 +2,8 @@
 #include <Hx711.h>        //librairie de la carte de mesure en pont de wheatstone Hx711 attention librairie perso base sur première librairie
 #include <stdint.h>
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
-#include "Capteur.h"
-#include "Motorisation.h"
+//#include "Capteur.h"
+#include "Plateau.h"
 // #include "Piece.h"
 
 #define PIN_SENS_MOTEUR2 9 // controle moteur 2
@@ -27,10 +27,10 @@
 
 //AccelStepper xaxis(AccelStepper::DRIVER, 2, 5); 
 //AccelStepper yaxis(AccelStepper::DRIVER, 3, 6); 
-  //moteur axe X POO
-Motorisation X(2,5,X_VITESSE_MAX,X_ACCELERATION_MAX);
-Motorisation Y(3,6,Y_VITESSE_MAX,Y_ACCELERATION_MAX);
-Motorisation Z(4,7,100,50);
+//moteur axe X POO
+Plateau X(2,5,X_VITESSE_MAX,X_ACCELERATION_MAX);   //ICI DONNER STRUCTURE AXE
+Plateau Y(3,6,Y_VITESSE_MAX,Y_ACCELERATION_MAX);  
+//Motorisation Z(4,7,100,50);
 
 bool first = true;
 
@@ -40,7 +40,7 @@ void setup()
   delay(1000);
   X.setup(); //POO
   Y.setup();
-  Z.setup();
+  //Z.setup();
   // pinMode(PIN_ENABLE, OUTPUT);
   // pinMode(PIN_SENS_MOTEUR2, OUTPUT);
   // digitalWrite(PIN_SENS_MOTEUR2,1);
@@ -54,25 +54,12 @@ void loop()
 {
   if (first)
   {  
-    
 
-    Capteur A(10,A0);
+    X.deplacerX(100);
+    X.debug();
 
-    
-
-    //X.deplacer(-400);
-    // X.deplacer(100);
-    // //X.debug();
-
-     Y.deplacer(-400);
-    // Y.deplacer(100);
-    // //Y.debug();
-
-    // Z.deplacer(-100);
-    // Z.deplacer(100);
-    // //Z.debug();
-
-    // A.mesurer_le_poids();
+    Y.deplacerY(200);
+    Y.debug();
 
     first=false;
   }
