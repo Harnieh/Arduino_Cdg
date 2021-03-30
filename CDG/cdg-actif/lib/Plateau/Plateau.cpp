@@ -22,27 +22,8 @@ void Plateau::setup()
    digitalWrite(pinenable,0);
 }
 
-void Plateau::deplacerY(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
-{
-   //AccelStepper axeY(AccelStepper::DRIVER, pinStep, pinDirection);
-   // REPLACER LES ACCELSTEPPER DANS LES FONCTIONS DE DEPLACEMENT
-   Serial.println("setcurrentpos");
 
-   axeY.setMaxSpeed(piloteVitesseMaxPas);  //test de passer valeur constru
-   Serial.println("setMaxSpeed");
-
-   axeY.setAcceleration(piloteAccelerationPas);    //test de passer valeur constru
-   Serial.println("setAcceleration");
-   position_mm = dist_mm * facteurConversionMmPas;
-
-   axeY.runToNewPosition(dist_mm);
-   positionPas = dist_mm;
-     // envoie_donnees(1, position_mm); //envoie la nouvelle position en x pour affichage case 1
-      
-   
-} //fin de la procédure de déplacement
-
-void Plateau::deplacerX(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
+void Plateau::deplacer(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
 {
    axeY.setCurrentPosition(0);
    Serial.println("setcurrentpos");

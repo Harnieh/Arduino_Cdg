@@ -30,8 +30,7 @@ class Plateau : public AccelStepper
     Plateau(int pinDuPas, int pinDeDirection, /*float facteur,*/ int vitessemax, int acceleration);  //Constructeur par défaut
     void setup();
 
-    void deplacerX(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
-    void deplacerY(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
+    void deplacer(long dist_mm); //procédure de déplacement sur une position ABSOLUE en pas
 
     void debug();
 };

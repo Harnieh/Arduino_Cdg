@@ -28,9 +28,9 @@
 //AccelStepper xaxis(AccelStepper::DRIVER, 2, 5); 
 //AccelStepper yaxis(AccelStepper::DRIVER, 3, 6); 
 //moteur axe X POO
-//Plateau X(2,5,X_VITESSE_MAX,X_ACCELERATION_MAX);   // DONNER STRUCTURE AXE
+Plateau X(2,5,X_VITESSE_MAX,X_ACCELERATION_MAX);   // DONNER STRUCTURE AXE
 Plateau Y(3,6,Y_VITESSE_MAX,Y_ACCELERATION_MAX);  
-//Motorisation Z(4,7,100,50);
+Plateau Z(4,7,100,50);
 
 bool first = true;
 
@@ -55,8 +55,15 @@ void loop()
     //X.deplacerX(100);
     //X.debug();
 
-    Y.deplacerY(400);
+    
+    X.deplacer(-300);
+    X.debug();
+
+    Y.deplacer(-300);
     Y.debug();
+
+    Z.deplacer(-300);
+    Z.debug();
 
     first=false;
   }
