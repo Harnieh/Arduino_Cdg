@@ -28,7 +28,7 @@
 //AccelStepper xaxis(AccelStepper::DRIVER, 2, 5); 
 //AccelStepper yaxis(AccelStepper::DRIVER, 3, 6); 
 //moteur axe X POO
-Plateau X(2,5,X_VITESSE_MAX,X_ACCELERATION_MAX);   //ICI DONNER STRUCTURE AXE
+//Plateau X(2,5,X_VITESSE_MAX,X_ACCELERATION_MAX);   // DONNER STRUCTURE AXE
 Plateau Y(3,6,Y_VITESSE_MAX,Y_ACCELERATION_MAX);  
 //Motorisation Z(4,7,100,50);
 
@@ -38,7 +38,7 @@ void setup()
 {
   Serial.begin(9600);
   delay(1000);
-  X.setup(); //POO
+  // X.setup(); //POO
   Y.setup();
   //Z.setup();
   // pinMode(PIN_ENABLE, OUTPUT);
@@ -48,17 +48,14 @@ void setup()
   Serial.println("setup main");
 }
 
-
-
 void loop()
 {
   if (first)
   {  
+    //X.deplacerX(100);
+    //X.debug();
 
-    X.deplacerX(100);
-    X.debug();
-
-    Y.deplacerY(200);
+    Y.deplacerY(400);
     Y.debug();
 
     first=false;

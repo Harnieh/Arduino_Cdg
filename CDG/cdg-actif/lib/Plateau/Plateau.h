@@ -4,17 +4,21 @@
 class Plateau : public AccelStepper
 {
     private:
-    AccelStepper axis;
-
+    
+    
     int pinStep;    //Pin défini step 
     int pinDirection;   //Pin défini direction
-
+    int piloteVitesseMaxPas;    //Vitesse en pas par seconde
+    int piloteAccelerationPas;  //Acceleration du servo en pas par seconde^2 ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission
+    AccelStepper axeY;
+    
+    float facteurConversionMmPas; //facteur de conversion mm/pas
     long positionPas;
-    float facteur; //facteur de conversion mm/pas
     float position_mm; //position sur l'axe x en mm
 
-    int piloteVitesseMaxPas;    //Vitesse en pas par seconde
-    int piloteAccelerationPas;  //Acceleration du servo en pas par seconde^2 ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission 
+    
+    
+    
 //    float facteurDeConversion;    //Facteur de conversion en mm par pas pour l'axe (float ?_facteur)
 
 //AXE    long position_pas;   //Position sur l'axe en pas (long ?_position_pas)

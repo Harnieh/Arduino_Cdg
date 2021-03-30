@@ -1,16 +1,15 @@
 #include "Plateau.h"
 #include "Arduino.h"
+#include <AccelStepper.h>
 #include "SensMoteur.h"
 #define pinsensmoteur2 9
 #define pinenable 8
 
-Plateau::Plateau(int pinDuPas, int pinDeDirection, int vitessemax, int acceleration) //Constructeur du moteur
+Plateau::Plateau(int pinDuPas, int pinDeDirection, int vitessemax, int acceleration):pinStep(pinDuPas),pinDirection(pinDeDirection),
+                                                                                    piloteVitesseMaxPas(vitessemax), piloteAccelerationPas(acceleration),
+                                                                                    axeY(AccelStepper::DRIVER, pinStep, pinDirection) //Constructeur du moteur
 {
-   pinStep = pinDuPas;    //Pin défini step 
-   pinDirection = pinDeDirection;   //Pin défini direction
-   piloteVitesseMaxPas = vitessemax;   //Vitesse en pas par seconde
-   piloteAccelerationPas = acceleration;
-
+   facteurConversionMmPas = (2 * 20) / (200*4);
    positionPas = 0;
    position_mm = 0; //position sur l'axe x en mm
 }
@@ -18,26 +17,26 @@ Plateau::Plateau(int pinDuPas, int pinDeDirection, int vitessemax, int accelerat
 void Plateau::setup()
 {
    pinMode(pinenable, OUTPUT);   //Pinenable obligatoire pour avancement des moteurs 
-   pinMode(pinsensmoteur2, OUTPUT);    // Nécessaire pour le 2nd moteur de X
-   digitalWrite(pinsensmoteur2,negatif);
+   // pinMode(pinsensmoteur2, OUTPUT);    // Nécessaire pour le 2nd moteur de X
+   // digitalWrite(pinsensmoteur2,negatif);
    digitalWrite(pinenable,0);
 }
 
 void Plateau::deplacerY(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
 {
-   AccelStepper axis(AccelStepper::DRIVER, pinStep, pinDirection);
-   axis.setCurrentPosition(0);
+   //AccelStepper axeY(AccelStepper::DRIVER, pinStep, pinDirection);
+   // REPLACER LES ACCELSTEPPER DANS LES FONCTIONS DE DEPLACEMENT
    Serial.println("setcurrentpos");
 
-   axis.setMaxSpeed(piloteVitesseMaxPas);  //test de passer valeur constru
+   axeY.setMaxSpeed(piloteVitesseMaxPas);  //test de passer valeur constru
    Serial.println("setMaxSpeed");
 
-   axis.setAcceleration(piloteAccelerationPas);    //test de passer valeur constru
+   axeY.setAcceleration(piloteAccelerationPas);    //test de passer valeur constru
    Serial.println("setAcceleration");
+   position_mm = dist_mm * facteurConversionMmPas;
 
-   axis.runToNewPosition(dist_mm);
+   axeY.runToNewPosition(dist_mm);
    positionPas = dist_mm;
-   position_mm = positionPas * facteur;
      // envoie_donnees(1, position_mm); //envoie la nouvelle position en x pour affichage case 1
       
    
@@ -45,14 +44,13 @@ void Plateau::deplacerY(long dist_mm) //procédure de déplacement sur une posit
 
 void Plateau::deplacerX(long dist_mm) //procédure de déplacement sur une position ABSOLUE en pas
 {
-   AccelStepper axis(AccelStepper::DRIVER, pinStep, pinDirection);
-   axis.setCurrentPosition(0);
+   axeY.setCurrentPosition(0);
    Serial.println("setcurrentpos");
 
-   axis.setMaxSpeed(piloteVitesseMaxPas);  //test de passer valeur constru
+   axeY.setMaxSpeed(piloteVitesseMaxPas);  //test de passer valeur constru
    Serial.println("setMaxSpeed");
 
-   axis.setAcceleration(piloteAccelerationPas);    //test de passer valeur constru
+   axeY.setAcceleration(piloteAccelerationPas);    //test de passer valeur constru
    Serial.println("setAcceleration");
 
    if (dist_mm > 0)     //RAJOUTER CONDITION
@@ -67,9 +65,10 @@ void Plateau::deplacerX(long dist_mm) //procédure de déplacement sur une posit
    }
    if (dist_mm != 0)
    {
-      axis.runToNewPosition(dist_mm);
+      position_mm = dist_mm * facteurConversionMmPas;
+      axeY.runToNewPosition(dist_mm);
       positionPas = dist_mm;
-      position_mm = positionPas * facteur;
+      
      // envoie_donnees(1, position_mm); //envoie la nouvelle position en x pour affichage case 1
       
    }
@@ -90,7 +89,7 @@ void Plateau::debug()
    Serial.println(pinStep);
    
    Serial.print("facteur=");
-   Serial.println(facteur);
+   Serial.println(facteurConversionMmPas);
 
    Serial.print("positionPas=");
    Serial.println(positionPas);

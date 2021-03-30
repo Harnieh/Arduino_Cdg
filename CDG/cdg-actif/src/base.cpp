@@ -252,7 +252,7 @@
 //             mesure_cdg();
 //            }
 //       break; 
-      
+
 //       case 23: // Z-
 //           if (mode==1)// déplacement suivant Z- de l'incrément
 //            {
