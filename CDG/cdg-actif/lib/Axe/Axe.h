@@ -1,5 +1,0 @@
-struct Axe
-{
-    /* data */
-    
-};

@@ -7,7 +7,7 @@
 
 Plateau::Plateau(int pinDuPas, int pinDeDirection, int vitessemax, int acceleration):pinStep(pinDuPas),pinDirection(pinDeDirection),
                                                                                     piloteVitesseMaxPas(vitessemax), piloteAccelerationPas(acceleration),
-                                                                                    axeY(AccelStepper::DRIVER, pinStep, pinDirection) //Constructeur du moteur
+                                                                                    axeY(AccelStepper::DRIVER, pinStep, pinDirection) //Constructeur du plateau
 {
    facteurConversionMmPas = (2 * 20) / (200*4);
    positionPas = 0;

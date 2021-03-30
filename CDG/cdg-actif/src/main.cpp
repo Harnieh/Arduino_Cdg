@@ -54,7 +54,6 @@ void loop()
   {  
     //X.deplacerX(100);
     //X.debug();
-
     
     X.deplacer(-300);
     X.debug();

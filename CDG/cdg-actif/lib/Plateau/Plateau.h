@@ -1,7 +1,7 @@
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
 #include <stdint.h>
 
-class Plateau : public AccelStepper
+class Plateau
 {
     private:
     
