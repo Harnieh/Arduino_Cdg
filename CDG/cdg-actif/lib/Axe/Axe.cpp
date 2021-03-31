@@ -4,8 +4,8 @@
 #define pinsensmoteur2 9
 #define pinenable 8
 
-Axe::Axe(int pinDuPas, int pinDeDirection, int vitessemax, int acceleration):pinStep(pinDuPas),pinDirection(pinDeDirection),
-                                                                                    piloteVitesseMaxPas(vitessemax), piloteAccelerationPas(acceleration),
+Axe::Axe(int _pinStep, int _pinDirection, int _vitesseMax_Pas, int _acceleration_Pas):pinStep(_pinStep),pinDirection(_pinDirection),
+                                                                                    vitesseMax_Pas(_vitesseMax_Pas), acceleration_Pas(_acceleration_Pas),
                                                                                     moteur(AccelStepper::DRIVER, pinStep, pinDirection) //Constructeur du plateau
 {
    facteurConversionMmPas = (2 * 20) / (200*4);
@@ -27,10 +27,10 @@ void Axe::deplacer(long dist_mm) //procédure de déplacement sur une position A
    moteur.setCurrentPosition(0);
    Serial.println("setcurrentpos");
 
-   moteur.setMaxSpeed(piloteVitesseMaxPas);  //test de passer valeur constru
+   moteur.setMaxSpeed(vitesseMax_Pas);  //test de passer valeur constru
    Serial.println("setMaxSpeed");
 
-   moteur.setAcceleration(piloteAccelerationPas);    //test de passer valeur constru
+   moteur.setAcceleration(acceleration_Pas);    //test de passer valeur constru
    Serial.println("setAcceleration");
 
    if (dist_mm > 0)     //RAJOUTER CONDITION
@@ -55,10 +55,10 @@ void Axe::deplacer(long dist_mm) //procédure de déplacement sur une position A
 void Axe::debug() 
 {
    Serial.print("piloteAccelerationPas");
-   Serial.println(piloteAccelerationPas);
+   Serial.println(acceleration_Pas);
 
    Serial.print("piloteVitesseMaxPas=");
-   Serial.println(piloteVitesseMaxPas);
+   Serial.println(vitesseMax_Pas);
 
    Serial.print("pinDirection=");
    Serial.println(pinDirection);

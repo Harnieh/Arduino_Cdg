@@ -10,8 +10,8 @@ class Axe
     
     int pinStep;    //Pin défini step 
     int pinDirection;   //Pin défini direction
-    int piloteVitesseMaxPas;    //Vitesse en pas par seconde
-    int piloteAccelerationPas;  //Acceleration du servo en pas par seconde^2 ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission
+    int vitesseMax_Pas;    //Vitesse en pas par seconde
+    int acceleration_Pas;  //Acceleration du servo en pas par seconde^2 ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission
 
     AccelStepper moteur;
 

@@ -19,9 +19,9 @@ void Plateau::deplacerPlateau()
     Serial.println("Deplacement");  
 
 
-    axeX.deplacer(400);
-    axeY.deplacer(400);
-    palpeur.deplacer(400);
+    axeX.deplacer(-400);
+    axeY.deplacer(-400);
+    palpeur.deplacer(-400);
 }
 
 
