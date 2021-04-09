@@ -13,7 +13,8 @@ private:
 
 public:
 
-    Plateau(/*Axe axeX, Axe axeY, Axe palpeur*/);
+    Plateau();
+
 
     void setupPlateau();
     void deplacerPlateau();

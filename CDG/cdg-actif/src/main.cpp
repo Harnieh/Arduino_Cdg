@@ -17,6 +17,7 @@
 #define Y_VITESSE_MAX 500   //pas par seconde
 #define Y_ACCELERATION_MAX 200 //pas par seconde² ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission
 
+#define NB_MESURES 30
 
 // axe X moteur 1  pin 2 = step, pin 5 = direction
 // axe X moteur 2  step dupliqué physiquement sur la carte de commande, pin 13 = direction
@@ -31,8 +32,12 @@
 // Axe Y(3,6,Y_VITESSE_MAX,Y_ACCELERATION_MAX);  
 // Axe Z(4,7,Y_VITESSE_MAX,Y_ACCELERATION_MAX);
 
-Plateau Test;
+Plateau plateauBanc;
 
+Hx711 capteur1(10, A0);
+float capteur1_valeur=0;
+float capteur1_offset=0;
+float capteur1_fact=1;
 
 bool first = true;
 
@@ -40,6 +45,7 @@ void setup()
 {
   Serial.begin(9600);
   delay(1000);
+  
   // X.setup(); //POO
   //Y.setup();
   //Z.setup();
@@ -47,7 +53,8 @@ void setup()
   // pinMode(PIN_SENS_MOTEUR2, OUTPUT);
   // digitalWrite(PIN_SENS_MOTEUR2,1);
   // digitalWrite(PIN_ENABLE,0);
-  Test.setupPlateau();
+  
+  plateauBanc.setupPlateau();
 
   Serial.println("setup main");
 }
@@ -56,19 +63,10 @@ void loop()
 {
   if (first)
   {  
-    //X.deplacerX(100);
-    //X.debug();
-    
-    // X.deplacer(-300);
-    // X.debug();
-
-    // Y.deplacer(-300);
-    // Y.debug();
-
-    // Z.deplacer(500);
-    // Z.debug();
-    Test.deplacerPlateau();
-    first=false;
+    capteur1_valeur=capteur1.averageValue(NB_MESURES)/*-capteur1_offset)/capteur1_fact*/;
+    Serial.println(capteur1_valeur);
+    //plateauBanc.deplacerPlateau();
+    //first=false;
   }
 }
 

@@ -1,6 +1,6 @@
 #include "Plateau.h"
 
-Plateau::Plateau(/*Axe axeX, Axe axeY, Axe palpeur*/): axeX(2,5,500,200),axeY(3,6,500,200),palpeur(4,7,500,200)
+Plateau::Plateau(): axeX(2,5,500,200),axeY(3,6,500,200),palpeur(4,7,500,200)    
 { 
     Serial.println("Constru plateau");
 }
