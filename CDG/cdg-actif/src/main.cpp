@@ -4,6 +4,7 @@
 #include <AccelStepper.h> //librairie de pilotage de moteurs pas à pas
 #include "Axe.h"
 #include "Plateau.h"
+#include "Capteur.h"
 
 #define PIN_SENS_MOTEUR2 9 // controle moteur 2
 #define PIN_ENABLE 8
@@ -17,7 +18,7 @@
 #define Y_VITESSE_MAX 500   //pas par seconde
 #define Y_ACCELERATION_MAX 200 //pas par seconde² ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission
 
-#define NB_MESURES 30
+
 
 // axe X moteur 1  pin 2 = step, pin 5 = direction
 // axe X moteur 2  step dupliqué physiquement sur la carte de commande, pin 13 = direction
@@ -32,9 +33,9 @@
 // Axe Y(3,6,Y_VITESSE_MAX,Y_ACCELERATION_MAX);  
 // Axe Z(4,7,Y_VITESSE_MAX,Y_ACCELERATION_MAX);
 
-Plateau plateauBanc;
+Plateau plateauBanc;  
 
-Hx711 capteur1(10, A0);
+Capteur un(10,A0,-60,-87.5);
 float capteur1_valeur=0;
 float capteur1_offset=0;
 float capteur1_fact=1;
@@ -45,6 +46,7 @@ void setup()
 {
   Serial.begin(9600);
   delay(1000);
+  
   
   // X.setup(); //POO
   //Y.setup();
@@ -63,10 +65,10 @@ void loop()
 {
   if (first)
   {  
-    capteur1_valeur=capteur1.averageValue(NB_MESURES)/*-capteur1_offset)/capteur1_fact*/;
-    Serial.println(capteur1_valeur);
-    //plateauBanc.deplacerPlateau();
-    //first=false;
+    un.mesurer_le_poids();
+    un.envoie_donnees(1,10);
+  //  plateauBanc.deplacerPlateau();
+  //  first=false;
   }
 }
 

@@ -1,31 +1,44 @@
 #include "Arduino.h"
 #include "Capteur.h"
 
-Capteur::Capteur(int PinCapteurNum, uint8_t pinCapteurAlpha)
+#define NB_MESURES 30
+
+Capteur::Capteur(int _pinUn, uint8_t _pinDeux,float _capteurPositionX_mm,float _capteurPositionY_mm):pinUn(_pinUn),pinDeux(_pinDeux),capteurPositionX_mm(_capteurPositionX_mm)
+                                                                                                    ,capteurPositionY_mm(_capteurPositionY_mm),pressioncaptor(Hx711(pinUn,pinDeux))
 {
-    Serial.println("CONSTRU CAPTEUR");
-    Serial.println(PinCapteurNum);
-    Serial.println(pinCapteurAlpha);
-
-    pinUn = PinCapteurNum;
-    pinDeux = pinCapteurAlpha;
-    Hx711 Moncapteur(int pinUn, uint8_t pinDeux);
-
-    Serial.println(pinUn);
-    Serial.println(pinDeux);
-
-
-    capteurValeur=0.0;//VALEUR (float capteur?_valeur)
-    capteurPoidsAVide=0.0;//POIDS A VIDE (float capteur?_offset)
-    capteurFacteurEchelle=0.0;//FACTEUR D ECHELLE (float capteur?_fact)
-    capteurTareConnue= (1.43 + 20) / 4;//POIDS DE LA TARE DU CAPTEUR EN NEWTON(float capteur?_tare_connue)
-    capteurPositionX=0.0;//POSITION DU CAPTEUR EN MM (float capteur?_x)
-    capteurPositionY=0.0;//(float capteur?_y)
+    Serial.println("constru capteur");
 }
 
 float Capteur::mesurer_le_poids()
 {
-    Serial.println("MESURER LE POIDS");
-    //capteurValeur=
+    Serial.println(capteurValeur);
+    capteurValeur=(pressioncaptor.averageValue(NB_MESURES)-capteurPoidsAVide)/capteurFacteurEchelle;
+    Serial.println(capteurValeur);
+    //this->envoie_donnees(6,capteurValeur);
+}
+
+
+
+void Capteur::envoie_donnees(byte grandeur,float valeur)
+
+{
+  byte byte1;
+  byte byte2;      
+   valeur=valeur*10; //x10 pour avoir une précision de 0,1
+   valeur=valeur+32768; //prise en compte des valeurs négatives
+   if (valeur<0)
+     {
+      valeur=0;
+     }
+   if (valeur>65535)
+     {
+      valeur=65535;
+     }
+   byte2 = byte(valeur/256);
+   byte1 = byte(valeur-256*byte2);
+   Serial.write(grandeur);
+   Serial.write(byte1);
+   Serial.write(byte2);
+   delay(200);
 }
 

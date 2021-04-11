@@ -6,7 +6,7 @@
 
 Axe::Axe(int _pinStep, int _pinDirection, int _vitesseMax_Pas, int _acceleration_Pas):pinStep(_pinStep),pinDirection(_pinDirection),
                                                                                     vitesseMax_Pas(_vitesseMax_Pas), acceleration_Pas(_acceleration_Pas),
-                                                                                    moteur(AccelStepper::DRIVER, pinStep, pinDirection) //Constructeur du plateau
+                                                                                    moteur(AccelStepper::DRIVER, pinStep, pinDirection) //Constructeur du plateau par delegation
 {
    facteurConversionMmPas = (2 * 20) / (200*4);
    positionPas = 0;

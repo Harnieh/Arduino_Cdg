@@ -294,7 +294,7 @@
 
 // void envoie_donnees(byte grandeur,float valeur)
 //   {
-//    byte byte1;
+//   byte byte1;
 //   byte byte2;      
 //    valeur=valeur*10; //x10 pour avoir une précision de 0,1
 //    valeur=valeur+32768; //prise en compte des valeurs négatives
