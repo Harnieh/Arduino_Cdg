@@ -39,9 +39,10 @@ Balance balanceBanc;
 
 
 //Capteur un(10,A0,-60,-87.5);
-float capteur1_valeur=0;
-float capteur1_offset=0;
-float capteur1_fact=1;
+
+// float capteur1_valeur=0;
+// float capteur1_offset=0;
+// float capteur1_fact=1;
 
 bool first = true;
 
