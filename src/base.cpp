@@ -47,7 +47,7 @@
 // float capteur4_offset=0; //valeur à vide du capteur4
 // float capteur4_fact=0; //facteur d'echelle du capteur4
 // float capteur4_tare_connue=(1.43+20)/4; //poids de la tare du capteur 3 (newton) plateau  avec masse de 2kg centrée
-// float capteur4_x=-60; //position du capteur 4 en mm ATTENTION si c'est la pièce qui se déplace pas le palpeur la position du capteur est inversé
+// float capteur4_x=-60; //posiation du capteur 4 en mm ATTENTION si c'est la pièce qui se déplace pas le palpeur la position du capteur est inversé
 // float capteur4_y=87.5; //position du capteur 4 en mm
 
 // float mesure_poids=0; //somme ds poids de chaque capteur (N)

@@ -16,7 +16,7 @@ public:
 
     Balance();
     void mesurer_poids();
-    
+
 };
 
 

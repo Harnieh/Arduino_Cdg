@@ -9,8 +9,9 @@ Balance::Balance(): un(10,A0,-60,-87.5),deux(11,A1,60,-87.5),trois(12,A2,60,87.5
 
 void Balance::mesurer_poids() 
 {
-    un.mesurer_le_poids();
-    deux.mesurer_le_poids();
-    trois.mesurer_le_poids();
-    quatre.mesurer_le_poids();
+    un.mesurer_le_poids(6);
+    deux.mesurer_le_poids(7);
+    trois.mesurer_le_poids(8);
+    quatre.mesurer_le_poids(9);
 }
+
