@@ -9,15 +9,23 @@ Capteur::Capteur(int _pinUn, uint8_t _pinDeux,float _capteurPositionX_mm,float _
     Serial.println("constru capteur");
 }
 
+void Capteur::tarer_a_zero()
+{
+  capteurPoidsAVide=pressioncaptor.averageValue(NB_MESURES);
+}
+
+void Capteur::tarer_connue()
+{
+  capteurFacteurEchelle=(pressioncaptor.averageValue(NB_MESURES)-capteurPoidsAVide)/(capteurTareConnue_Newton/*+PLATOPOI*/);
+}
+
 float Capteur::mesurer_le_poids(int grandeurEnvoi)
 {
   //  Serial.println(capteurValeur);
-    capteurValeur=/*(*/pressioncaptor.averageValue(NB_MESURES)/*-capteurPoidsAVide)/capteurFacteurEchelle*/;
+    capteurValeur=(pressioncaptor.averageValue(NB_MESURES)-capteurPoidsAVide)/capteurFacteurEchelle;
   //  Serial.println(capteurValeur);
   this->envoie_donnees(grandeurEnvoi,capteurValeur);
 }
-
-
 
 void Capteur::envoie_donnees(byte grandeur,float valeur)
 {

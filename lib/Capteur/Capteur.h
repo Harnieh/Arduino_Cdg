@@ -22,8 +22,15 @@ public:
 
 Capteur(int pinUn,const uint8_t pinDeux,float positionX_mm,float positionY_mm); //Constructeur
 
+void tarer_a_zero();
+void tarer_connue();
 float mesurer_le_poids(int grandeurEnvoi);
 void envoie_donnees(byte grandeur,float valeur);    //mettre autre part?
+
+float getCapteurValeur() const 
+{
+    return capteurValeur; 
+}
 
 };
 

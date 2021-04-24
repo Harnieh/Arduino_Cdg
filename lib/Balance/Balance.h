@@ -12,10 +12,14 @@ Capteur deux;
 Capteur trois;
 Capteur quatre;
 
+float mesure_poids;
+
 public:
 
     Balance();
-    void mesurer_poids();
+    void tareZero();   // tare  pour déterminer à zéro
+    void tareConnue(); //mesure du poids avec tare connue pour déterminer le facteur d'écchelle
+    float mesurer_poids();
 
 };
 

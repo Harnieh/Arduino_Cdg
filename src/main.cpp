@@ -69,6 +69,7 @@ void loop()
 {
   if (first)
   {  
+    balanceBanc.tareZero();
     balanceBanc.mesurer_poids();
     // un.mesurer_le_poids();
     //un.envoie_donnees(1,10);
