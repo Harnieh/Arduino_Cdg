@@ -1,7 +1,5 @@
 #include "balance.h"
 
-
-
 Balance::Balance(): un(10,A0,-60,-87.5),deux(11,A1,60,-87.5),trois(12,A2,60,87.5),quatre(13,A3,-60,87.5)
 {
     Serial.println("Constru balance");
@@ -16,6 +14,12 @@ void Balance::tareZero()
 
     this->mesurer_poids();
 }
+
+void Balance::mesurerPoidsPlateauAVide() 
+    {
+        poidsPlateau=this->mesurer_poids();
+        un.envoie_donnees(10,poidsPlateau); //utilisation du capteur un, pas forcement utile > passage par un capteur ou une nouvelle classe pour les envois?
+    }
 
 void Balance::tareConnue()
 {

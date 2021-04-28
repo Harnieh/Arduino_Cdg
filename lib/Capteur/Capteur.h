@@ -32,6 +32,8 @@ float getCapteurValeur() const
     return capteurValeur; 
 }
 
+
+
 };
 
 #endif // CAPTEUR_H

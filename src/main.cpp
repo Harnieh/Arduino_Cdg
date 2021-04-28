@@ -20,7 +20,6 @@
 #define Y_ACCELERATION_MAX 200 //pas par seconde² ATTENTION à calculer en fonction de la masse, du couple moteur et de la transmission
 
 
-
 // axe X moteur 1  pin 2 = step, pin 5 = direction
 // axe X moteur 2  step dupliqué physiquement sur la carte de commande, pin 13 = direction
 // axe Y moteur 3 pin 3 = step, pin 6 = direction
@@ -69,6 +68,7 @@ void loop()
 {
   if (first)
   {  
+    balanceBanc.mesurerPoidsPlateauAVide();
     balanceBanc.tareZero();
     balanceBanc.mesurer_poids();
     // un.mesurer_le_poids();

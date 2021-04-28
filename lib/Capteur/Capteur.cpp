@@ -10,13 +10,13 @@ Capteur::Capteur(int _pinUn, uint8_t _pinDeux,float _capteurPositionX_mm,float _
 }
 
 void Capteur::tarer_a_zero()
-{
+{ 
   capteurPoidsAVide=pressioncaptor.averageValue(NB_MESURES);
 }
 
 void Capteur::tarer_connue()
 {
-  capteurFacteurEchelle=(pressioncaptor.averageValue(NB_MESURES)-capteurPoidsAVide)/(capteurTareConnue_Newton/*+PLATOPOI*/);
+  capteurFacteurEchelle=(pressioncaptor.averageValue(NB_MESURES)-capteurPoidsAVide)/(capteurTareConnue_Newton/*+platopoid*/);
 }
 
 float Capteur::mesurer_le_poids(int grandeurEnvoi)
