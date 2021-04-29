@@ -1,6 +1,5 @@
 #include "Arduino.h"
 #include "Capteur.h"
-
 #define NB_MESURES 30
 
 Capteur::Capteur(int _pinUn, uint8_t _pinDeux,float _capteurPositionX_mm,float _capteurPositionY_mm):pinUn(_pinUn),pinDeux(_pinDeux),capteurPositionX_mm(_capteurPositionX_mm)
@@ -14,9 +13,9 @@ void Capteur::tarer_a_zero()
   capteurPoidsAVide=pressioncaptor.averageValue(NB_MESURES);
 }
 
-void Capteur::tarer_connue()
+void Capteur::tarer_connue(float poidsPlateau)
 {
-  capteurFacteurEchelle=(pressioncaptor.averageValue(NB_MESURES)-capteurPoidsAVide)/(capteurTareConnue_Newton/*+platopoid*/);
+  capteurFacteurEchelle=(pressioncaptor.averageValue(NB_MESURES)-capteurPoidsAVide)/(capteurTareConnue_Newton+poidsPlateau);
 }
 
 float Capteur::mesurer_le_poids(int grandeurEnvoi)

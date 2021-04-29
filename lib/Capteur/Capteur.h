@@ -9,6 +9,7 @@ private:
 int pinUn;
 uint8_t pinDeux;
 
+
 float capteurValeur=0;//VALEUR (float capteur?_valeur)
 float capteurPoidsAVide=0;//POIDS A VIDE (float capteur?_offset)
 float capteurFacteurEchelle=0;//FACTEUR D ECHELLE (float capteur?_fact)
@@ -23,7 +24,7 @@ public:
 Capteur(int pinUn,const uint8_t pinDeux,float positionX_mm,float positionY_mm); //Constructeur
 
 void tarer_a_zero();
-void tarer_connue();
+void tarer_connue(float poidsPlateau);
 float mesurer_le_poids(int grandeurEnvoi);
 void envoie_donnees(byte grandeur,float valeur);    //mettre autre part?
 

@@ -23,10 +23,10 @@ void Balance::mesurerPoidsPlateauAVide()
 
 void Balance::tareConnue()
 {
-    un.tarer_connue();
-    deux.tarer_connue();
-    trois.tarer_connue();
-    quatre.tarer_connue();
+    un.tarer_connue(poidsPlateau);
+    deux.tarer_connue(poidsPlateau);
+    trois.tarer_connue(poidsPlateau);
+    quatre.tarer_connue(poidsPlateau);
 
     this->mesurer_poids();
 }
