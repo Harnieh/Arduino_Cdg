@@ -69,12 +69,23 @@ void loop()
 {
   if (first)
   {  
+    plateauBanc.Increment1();
+    plateauBanc.deplacerPlateau();
+    plateauBanc.Increment10();
+    plateauBanc.deplacerPlateau();
+    plateauBanc.Increment100();
+    plateauBanc.deplacerPlateau();
+    plateauBanc.Increment1000();
+    plateauBanc.deplacerPlateau();
+
     balanceBanc.mesurerPoidsPlateauAVide();
     balanceBanc.tareZero();
     balanceBanc.mesurer_poids();
-    // un.mesurer_le_poids();
+
+    
+    //un.mesurer_le_poids();
     //un.envoie_donnees(1,10);
-    // plateauBanc.deplacerPlateau();
+    plateauBanc.deplacerPlateau();
     first=false;
   }
 }

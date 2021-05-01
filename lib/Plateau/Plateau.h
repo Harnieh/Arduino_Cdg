@@ -11,6 +11,8 @@ private:
     Axe axeY;
     Axe palpeur;
 
+    short increment;
+
 public:
 
     Plateau();
@@ -18,6 +20,13 @@ public:
 
     void setupPlateau();
     void deplacerPlateau();
+
+    void Increment1() { increment = 1; }
+    void Increment10() { increment = 10; }
+    void Increment100() { increment = 100;}
+    void Increment1000() { increment = 1000; }
+
+
 // Plateau::Plateau(/* args */)
 // {
 // }

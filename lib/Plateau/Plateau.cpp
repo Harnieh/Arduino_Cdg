@@ -17,11 +17,11 @@ void Plateau::setupPlateau()
 void Plateau::deplacerPlateau() 
 {
     Serial.println("Deplacement");  
-
-
-    axeX.deplacer(-400);
-    axeY.deplacer(-400);
-    palpeur.deplacer(-400);
+    Serial.println(increment); 
+    // axeX.deplacer(increment);
+    // axeY.deplacer(increment);
+    palpeur.deplacer(increment);       
 }
+
 
 
